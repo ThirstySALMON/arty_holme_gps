@@ -1,0 +1,77 @@
+--- CPU.v	2026-09-08 11:39:56.539158430 +0000
++++ CPU.v.new	2026-09-08 11:40:46.412390808 +0000
+@@ -159,8 +159,9 @@
+             default          : alu = tos;
+         endcase
+ 
+-    MULT18X18 mult(.P(nos_x_tos), .A({{2{nos[15]}},nos[15:0]}),
+-                                  .B({{2{tos[15]}},tos[15:0]}));
++    // Ported: MULT18X18 (Spartan-3) -> inferred DSP48E1 multiply (Artix-7)
++    assign nos_x_tos = $signed({{2{nos[15]}}, nos[15:0]}) *
++                       $signed({{2{tos[15]}}, tos[15:0]});
+ 
+     //////////////////////////////////////////////////////////////////////////
+     // Top of stack
+@@ -221,32 +222,39 @@
+     wire [8:0] dstk_addr = {1'b0, next_sp};
+     wire [8:0] rstk_addr = {1'b1, next_rp};
+ 
+-    RAMB16_S36_S36 cpu_stacks (
+-        .CLKA   (clk),          .CLKB   (clk),
+-        .DOPA   (),             .DOPB   (),
+-        .DIPA   (4'b1111),      .DIPB   (4'b1111),
+-        .ENA    (rst[2]),       .ENB    (rst[2]),
+-        .SSRA   (1'b0),         .SSRB   (1'b0),
+-        .DOA    (dstk_dout),    .DOB    (rstk_dout),
+-        .ADDRA  (dstk_addr),    .ADDRB  (rstk_addr),
+-        .DIA    (nos),          .DIB    (op5==op_call? pc_plus_2 : tos),
+-        .WEA    (dstk_wr),      .WEB    (rstk_wr));
++    // Ported: RAMB16_S36_S36 (Spartan-3) -> Block Memory Generator blk_cpu_stacks
++    // True dual-port, 512 x 32, common clock, WRITE_FIRST, no output reg.
++    // (Original tied DIP parity bits to 1; parity unused, dropped.)
++    blk_cpu_stacks cpu_stacks (
++        .clka   (clk),          .clkb   (clk),
++        .ena    (rst[2]),       .enb    (rst[2]),
++        .wea    (dstk_wr),      .web    (rstk_wr),
++        .addra  (dstk_addr),    .addrb  (rstk_addr),
++        .dina   (nos),          .dinb   (op5==op_call? pc_plus_2 : tos),
++        .douta  (dstk_dout),    .doutb  (rstk_dout));
+ 
+     //////////////////////////////////////////////////////////////////////////
+     // 1024 x 16-bit code and data memory expandable to 2048 x
+ 
+-    RAMB16_S18_S18 #(
+-        .INIT_A (op_nop),
+-        .SRVAL_A(op_nop)
+-    ) cpu_ram (
+-        .CLKA   (clk),          .CLKB   (clk),
+-        .DOPA   (),             .DOPB   (),
+-        .DIPA   (2'b11),        .DIPB   (2'b11),
+-        .SSRA   (~rst[2]),      .SSRB   (1'b0),
+-        .ENA    (1'b1),         .ENB    (rst[2]),
+-        .DOA    (op),           .DOB    (mem_dout),
+-        .ADDRA  (next_pc),      .ADDRB  (next_tos[10:1]),
+-        .DIA    (par),          .DIB    (nos[15:0]),
+-        .WEA    (rst[1]),       .WEB    (op8==op_store16));
++    // Ported: RAMB16_S18_S18 (Spartan-3) -> Block Memory Generator blk_cpu_ram
++    // True dual-port, 1024 x 16, common clock, WRITE_FIRST, no output reg.
++    // Memory initialised to op_nop (BMG "Fill Remaining" = 0x8000).
++    //
++    // CRITICAL: original used SRVAL_A(op_nop) with SSRA=~rst[2] so port A
++    // OUTPUT is forced to op_nop while held in reset (before code load).
++    // BMG's RSTA forces the output to 0, not op_nop, so we reproduce the
++    // exact behaviour in RTL: mux op_nop onto the fetch bus during reset.
++    wire [15:0] cpu_ram_doa;
++    wire        pc_in_reset = ~rst[2];
++    assign op = pc_in_reset ? op_nop : cpu_ram_doa;
++
++    blk_cpu_ram cpu_ram (
++        .clka   (clk),          .clkb   (clk),
++        .rsta   (~rst[2]),      .rstb   (1'b0),
++        .ena    (1'b1),         .enb    (rst[2]),
++        .wea    (rst[1]),       .web    (op8==op_store16),
++        .addra  (next_pc),      .addrb  (next_tos[10:1]),
++        .dina   (par),          .dinb   (nos[15:0]),
++        .douta  (cpu_ram_doa),  .doutb  (mem_dout));
+ 
+ endmodule

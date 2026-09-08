@@ -1,0 +1,87 @@
+--- GPS.v	2026-09-08 11:39:56.539749807 +0000
++++ GPS.v.new	2026-09-08 11:40:46.412666419 +0000
+@@ -261,39 +261,30 @@
+     wire host_rdy = wrEvt & op[HOST_RDY];
+ 
+     //////////////////////////////////////////////////////////////////////////
+-    // JTAG Interface
+-
+-    wire       tdi, shift;
+-    wire [2:1] sel, tck;
++    // JTAG Interface -- BYPASSED for Artix-7 (SPI-only bring-up).
++    // Original used BSCAN_SPARTAN3 (two user chains) for an optional PC/JTAG
++    // control path in parallel with the Pi SPI. BSCAN_SPARTAN3 does not exist
++    // on 7-series; rather than instantiate two BSCANE2, we drop the JTAG path
++    // entirely (Pi drives control over SPI only). JTAG inputs tied off;
++    // tdo stays a reg (driven by the host FSM below, read out on spi_miso).
++    wire       tdi   = 1'b0;
++    wire       shift = 1'b0;
++    wire [2:1] sel   = 2'b0;
++    wire [2:1] tck   = 2'b0;
+     reg        tdo;
+ 
+-    BSCAN_SPARTAN3 jtag (
+-        .RESET  (),
+-        .CAPTURE(),
+-        .SHIFT  (shift),
+-        .UPDATE (),
+-        .TDI    (tdi),
+-        .DRCK1  (tck[1]), .SEL1 (sel[1]), .TDO1 (tdo),
+-        .DRCK2  (tck[2]), .SEL2 (sel[2]), .TDO2 (tdo)
+-    );
+-
+     //////////////////////////////////////////////////////////////////////////
+-    // Host select: JTAG or SPI
++    // Host select: SPI only (spi_not_jtag forced high)
+ 
+-    wire       ha_clk, ha_rst, spi_not_jtag;
++    wire       ha_clk, ha_rst;
++    wire       spi_not_jtag = 1'b1;
+     wire [2:1] ha_cs;
+ 
+-    FDCPE fcp (
+-        .Q  (spi_not_jtag),
+-        .PRE(|spi_cs),
+-        .CLR(|sel),
+-        .CE (1'b0), .C(1'b0), .D(1'b0));
+-
+     BUFG ha_clk_bufg (
+-        .I  (spi_not_jtag? spi_sclk : &tck),
++        .I  (spi_sclk),
+         .O  (ha_clk));
+ 
+-    assign ha_cs = spi_not_jtag? spi_cs : sel & {2{shift}};
++    assign ha_cs  = spi_cs;
+     assign ha_rst = ~|ha_cs;
+ 
+     //////////////////////////////////////////////////////////////////////////
+@@ -428,18 +419,17 @@
+     wire [15:0] hb_dout;
+     reg  [15:0] hb_din;
+ 
+-    RAMB16_S1_S18 #(
+-        .WRITE_MODE_A("READ_FIRST") // Read TDO/MISO before writing TDI/MOSI
+-    ) host_fifo (
+-        .DIPB   (2'b11),        .DOPB   (),
+-        .ENA    (1'b1),         .ENB    (1'b1),
+-        .SSRA   (1'b0),         .SSRB   (1'b0),
+-
+-        .CLKA   (ha_clk),       .CLKB   (clk),
+-        .DIA    (ha_disr[2]),   .DIB    (hb_din),
+-        .WEA    (ha_wr),        .WEB    (hb_wr),
+-        .ADDRA  (ha_addr),      .ADDRB  (hb_addr),
+-        .DOA    (ha_dout),      .DOB    (hb_dout)
++    // Ported: RAMB16_S1_S18 (Spartan-3) -> Block Memory Generator blk_host_fifo
++    // True dual-port, INDEPENDENT clocks (A=ha_clk SPI, B=clk).
++    // Port A = 1b x 16384, Port B = 16b x 1024. Port A mode = READ_FIRST
++    // (load-bearing: read TDO/MISO before writing TDI/MOSI). No output reg.
++    blk_host_fifo host_fifo (
++        .clka   (ha_clk),       .clkb   (clk),
++        .ena    (1'b1),         .enb    (1'b1),
++        .wea    (ha_wr),        .web    (hb_wr),
++        .addra  (ha_addr),      .addrb  (hb_addr),
++        .dina   (ha_disr[2]),   .dinb   (hb_din),
++        .douta  (ha_dout),      .doutb  (hb_dout)
+     );
+ 
+     //////////////////////////////////////////////////////////////////////////

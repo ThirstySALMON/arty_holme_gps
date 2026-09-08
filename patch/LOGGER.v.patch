@@ -1,0 +1,29 @@
+--- LOGGER.v	2026-09-08 11:39:56.540542760 +0000
++++ LOGGER.v.new	2026-09-08 11:40:46.412877828 +0000
+@@ -32,16 +32,16 @@
+     reg [9:0] addrb;
+     reg       full;
+ 
+-    RAMB16_S18_S18 logger_ram (
+-        .CLKA   (clk),          .CLKB   (clk),
+-        .DIPA   (),             .DIPB   (2'b11),
+-        .DOPA   (),             .DOPB   (),
+-        .SSRA   (1'b0),         .SSRB   (1'b0),
+-        .ENA    (1'b1),         .ENB    (wr && ~full),
+-        .DOA    (dout),         .DOB    (),
+-        .ADDRA  (addra + rd),   .ADDRB  (addrb),
+-        .DIA    (),             .DIB    (din),
+-        .WEA    (1'b0),         .WEB    (1'b1));
++    // Ported: RAMB16_S18_S18 (Spartan-3) -> Block Memory Generator blk_logger_ram
++    // True dual-port, 1024 x 16, common clock, WRITE_FIRST, no output reg.
++    // Port A read-only (wea=0), Port B write-only (web=1, gated by enb).
++    blk_logger_ram logger_ram (
++        .clka   (clk),          .clkb   (clk),
++        .ena    (1'b1),         .enb    (wr && ~full),
++        .wea    (1'b0),         .web    (1'b1),
++        .addra  (addra + rd),   .addrb  (addrb),
++        .dina   (16'b0),        .dinb   (din),
++        .douta  (dout),         .doutb  ());
+ 
+     always @ (posedge clk)
+         if (rst)

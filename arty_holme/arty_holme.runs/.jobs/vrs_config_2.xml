@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<Runs Version="1" Minor="0">
+	<Run Id="blk_cpu_stacks_synth_1" LaunchDir="C:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.runs/blk_cpu_stacks_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="blk_cpu_ram_synth_1" LaunchDir="C:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.runs/blk_cpu_ram_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="blk_logger_ram_synth_1" LaunchDir="C:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.runs/blk_logger_ram_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="blk_host_fifo_synth_1" LaunchDir="C:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.runs/blk_host_fifo_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="blk_sampler_ram_synth_1" LaunchDir="C:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.runs/blk_sampler_ram_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="synth_1" LaunchDir="C:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.runs/synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado">
+		<Parent Id="blk_cpu_stacks_synth_1"/>
+		<Parent Id="blk_cpu_ram_synth_1"/>
+		<Parent Id="blk_logger_ram_synth_1"/>
+		<Parent Id="blk_host_fifo_synth_1"/>
+		<Parent Id="blk_sampler_ram_synth_1"/>
+	</Run>
+	<Parameters>
+		<Parameter Name="runs.monitorLSFJobs" Val="true" Type="bool"/>
+		<Parameter Name="runs.enableClusterConf" Val="true" Type="bool"/>
+		<Parameter Name="general.shortenLongPath" Val="true" Type="bool"/>
+		<Parameter Name="general.usePosixSpawnForFork" Val="true" Type="bool"/>
+	</Parameters>
+	<ProductInfo Name="vivado"/>
+</Runs>
+

@@ -1,0 +1,445 @@
+#-----------------------------------------------------------
+# Vivado v2025.2 (64-bit)
+# SW Build 6299465 on Fri Nov 14 19:35:11 GMT 2025
+# IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+# SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+# Start of session at: Tue Sep  8 17:12:59 2026
+# Process ID         : 12920
+# Current directory  : C:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.runs/synth_1
+# Command line       : vivado.exe -log Frac7_GPS_top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source Frac7_GPS_top.tcl
+# Log file           : C:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.runs/synth_1/Frac7_GPS_top.vds
+# Journal file       : C:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.runs/synth_1\vivado.jou
+# Running On         : DESKTOP-EALFKFH
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 19045
+# Processor Detail   : Intel(R) Core(TM) i5-6300U CPU @ 2.40GHz
+# CPU Frequency      : 2496 MHz
+# CPU Physical cores : 2
+# CPU Logical cores  : 4
+# Host memory        : 21323 MB
+# Swap memory        : 3623 MB
+# Total Virtual      : 24947 MB
+# Available Virtual  : 10755 MB
+#-----------------------------------------------------------
+source Frac7_GPS_top.tcl -notrace
+create_project: Time (s): cpu = 00:00:20 ; elapsed = 00:00:14 . Memory (MB): peak = 527.074 ; gain = 218.629
+Command: read_checkpoint -auto_incremental -incremental C:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.srcs/utils_1/imports/synth_1/Frac7_GPS_top.dcp
+INFO: [Vivado 12-5825] Read reference checkpoint from C:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.srcs/utils_1/imports/synth_1/Frac7_GPS_top.dcp for incremental synthesis
+INFO: [Vivado 12-7989] Please ensure there are no constraint changes
+Command: synth_design -top Frac7_GPS_top -part xc7a100tcsg324-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a100t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100t'
+INFO: [Device 21-403] Loading part xc7a100tcsg324-1
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 9612
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 1290.043 ; gain = 540.094
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'Frac7_GPS_top' [C:/Users/OIE/Desktop/arty_holme_gps/rtl/Frac7_GPS_top.v:21]
+INFO: [Synth 8-6157] synthesizing module 'IBUF' [C:/AMDDesignTools/2025.2/Vivado/scripts/rt/data/unisim_comp.v:82804]
+INFO: [Synth 8-6155] done synthesizing module 'IBUF' (0#1) [C:/AMDDesignTools/2025.2/Vivado/scripts/rt/data/unisim_comp.v:82804]
+INFO: [Synth 8-6157] synthesizing module 'clk_wiz_0' [c:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.v:65]
+INFO: [Synth 8-6157] synthesizing module 'clk_wiz_0_clk_wiz' [c:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_clk_wiz.v:65]
+INFO: [Synth 8-6157] synthesizing module 'MMCME2_ADV' [C:/AMDDesignTools/2025.2/Vivado/scripts/rt/data/unisim_comp.v:95844]
+	Parameter BANDWIDTH bound to: OPTIMIZED - type: string 
+	Parameter CLKFBOUT_MULT_F bound to: 1.562500e+01 - type: double 
+	Parameter CLKFBOUT_PHASE bound to: 0.000000e+00 - type: double 
+	Parameter CLKFBOUT_USE_FINE_PS bound to: FALSE - type: string 
+	Parameter CLKIN1_PERIOD bound to: 1.000000e+01 - type: double 
+	Parameter CLKOUT0_DIVIDE_F bound to: 7.812500e+01 - type: double 
+	Parameter CLKOUT0_DUTY_CYCLE bound to: 5.000000e-01 - type: double 
+	Parameter CLKOUT0_PHASE bound to: 0.000000e+00 - type: double 
+	Parameter CLKOUT0_USE_FINE_PS bound to: FALSE - type: string 
+	Parameter CLKOUT4_CASCADE bound to: FALSE - type: string 
+	Parameter COMPENSATION bound to: ZHOLD - type: string 
+	Parameter DIVCLK_DIVIDE bound to: 2 - type: integer 
+	Parameter STARTUP_WAIT bound to: FALSE - type: string 
+INFO: [Synth 8-6155] done synthesizing module 'MMCME2_ADV' (0#1) [C:/AMDDesignTools/2025.2/Vivado/scripts/rt/data/unisim_comp.v:95844]
+INFO: [Synth 8-6157] synthesizing module 'BUFG' [C:/AMDDesignTools/2025.2/Vivado/scripts/rt/data/unisim_comp.v:2678]
+INFO: [Synth 8-6155] done synthesizing module 'BUFG' (0#1) [C:/AMDDesignTools/2025.2/Vivado/scripts/rt/data/unisim_comp.v:2678]
+INFO: [Synth 8-6155] done synthesizing module 'clk_wiz_0_clk_wiz' (0#1) [c:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_clk_wiz.v:65]
+INFO: [Synth 8-6155] done synthesizing module 'clk_wiz_0' (0#1) [c:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.v:65]
+INFO: [Synth 8-6157] synthesizing module 'GPS' [C:/Users/OIE/Desktop/arty_holme_gps/rtl/GPS.v:23]
+INFO: [Synth 8-6157] synthesizing module 'CPU' [C:/Users/OIE/Desktop/arty_holme_gps/rtl/CPU.v:23]
+INFO: [Synth 8-6157] synthesizing module 'FULL_ADDER' [C:/Users/OIE/Desktop/arty_holme_gps/rtl/FULL_ADDER.v:21]
+INFO: [Synth 8-6157] synthesizing module 'XORCY' [C:/AMDDesignTools/2025.2/Vivado/scripts/rt/data/unisim_comp.v:171315]
+INFO: [Synth 8-6155] done synthesizing module 'XORCY' (0#1) [C:/AMDDesignTools/2025.2/Vivado/scripts/rt/data/unisim_comp.v:171315]
+INFO: [Synth 8-6157] synthesizing module 'MUXCY' [C:/AMDDesignTools/2025.2/Vivado/scripts/rt/data/unisim_comp.v:104847]
+INFO: [Synth 8-6155] done synthesizing module 'MUXCY' (0#1) [C:/AMDDesignTools/2025.2/Vivado/scripts/rt/data/unisim_comp.v:104847]
+INFO: [Synth 8-6155] done synthesizing module 'FULL_ADDER' (0#1) [C:/Users/OIE/Desktop/arty_holme_gps/rtl/FULL_ADDER.v:21]
+INFO: [Synth 8-6157] synthesizing module 'blk_cpu_stacks' [C:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.runs/synth_1/.Xil/Vivado-12920-DESKTOP-EALFKFH/realtime/blk_cpu_stacks_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'blk_cpu_stacks' (0#1) [C:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.runs/synth_1/.Xil/Vivado-12920-DESKTOP-EALFKFH/realtime/blk_cpu_stacks_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'blk_cpu_ram' [C:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.runs/synth_1/.Xil/Vivado-12920-DESKTOP-EALFKFH/realtime/blk_cpu_ram_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'blk_cpu_ram' (0#1) [C:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.runs/synth_1/.Xil/Vivado-12920-DESKTOP-EALFKFH/realtime/blk_cpu_ram_stub.v:6]
+WARNING: [Synth 8-7071] port 'rsta_busy' of module 'blk_cpu_ram' is unconnected for instance 'cpu_ram' [C:/Users/OIE/Desktop/arty_holme_gps/rtl/CPU.v:255]
+WARNING: [Synth 8-7071] port 'rstb_busy' of module 'blk_cpu_ram' is unconnected for instance 'cpu_ram' [C:/Users/OIE/Desktop/arty_holme_gps/rtl/CPU.v:255]
+WARNING: [Synth 8-7023] instance 'cpu_ram' of module 'blk_cpu_ram' has 16 connections declared, but only 14 given [C:/Users/OIE/Desktop/arty_holme_gps/rtl/CPU.v:255]
+INFO: [Synth 8-6155] done synthesizing module 'CPU' (0#1) [C:/Users/OIE/Desktop/arty_holme_gps/rtl/CPU.v:23]
+INFO: [Synth 8-6157] synthesizing module 'SAMPLER' [C:/Users/OIE/Desktop/arty_holme_gps/rtl/SAMPLER.v:23]
+INFO: [Synth 8-6157] synthesizing module 'blk_sampler_ram' [C:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.runs/synth_1/.Xil/Vivado-12920-DESKTOP-EALFKFH/realtime/blk_sampler_ram_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'blk_sampler_ram' (0#1) [C:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.runs/synth_1/.Xil/Vivado-12920-DESKTOP-EALFKFH/realtime/blk_sampler_ram_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'SAMPLER' (0#1) [C:/Users/OIE/Desktop/arty_holme_gps/rtl/SAMPLER.v:23]
+INFO: [Synth 8-6157] synthesizing module 'LOGGER' [C:/Users/OIE/Desktop/arty_holme_gps/rtl/LOGGER.v:23]
+INFO: [Synth 8-6157] synthesizing module 'blk_logger_ram' [C:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.runs/synth_1/.Xil/Vivado-12920-DESKTOP-EALFKFH/realtime/blk_logger_ram_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'blk_logger_ram' (0#1) [C:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.runs/synth_1/.Xil/Vivado-12920-DESKTOP-EALFKFH/realtime/blk_logger_ram_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'LOGGER' (0#1) [C:/Users/OIE/Desktop/arty_holme_gps/rtl/LOGGER.v:23]
+INFO: [Synth 8-6157] synthesizing module 'DEMOD' [C:/Users/OIE/Desktop/arty_holme_gps/rtl/DEMOD.v:23]
+	Parameter SET_CA_NCO bound to: 4 - type: integer 
+	Parameter SET_LO_NCO bound to: 5 - type: integer 
+	Parameter SET_SV bound to: 6 - type: integer 
+	Parameter SET_PAUSE bound to: 7 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'CACODE' [C:/Users/OIE/Desktop/arty_holme_gps/rtl/CACODE.v:21]
+INFO: [Synth 8-6155] done synthesizing module 'CACODE' (0#1) [C:/Users/OIE/Desktop/arty_holme_gps/rtl/CACODE.v:21]
+INFO: [Synth 8-6155] done synthesizing module 'DEMOD' (0#1) [C:/Users/OIE/Desktop/arty_holme_gps/rtl/DEMOD.v:23]
+INFO: [Synth 8-6157] synthesizing module 'blk_host_fifo' [C:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.runs/synth_1/.Xil/Vivado-12920-DESKTOP-EALFKFH/realtime/blk_host_fifo_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'blk_host_fifo' (0#1) [C:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.runs/synth_1/.Xil/Vivado-12920-DESKTOP-EALFKFH/realtime/blk_host_fifo_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'GPS' (0#1) [C:/Users/OIE/Desktop/arty_holme_gps/rtl/GPS.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'Frac7_GPS_top' (0#1) [C:/Users/OIE/Desktop/arty_holme_gps/rtl/Frac7_GPS_top.v:21]
+WARNING: [Synth 8-7129] Port op[15] in module DEMOD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port op[14] in module DEMOD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port op[13] in module DEMOD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port op[12] in module DEMOD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port op[11] in module DEMOD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port op[10] in module DEMOD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port op[9] in module DEMOD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port op[8] in module DEMOD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port op[3] in module DEMOD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port op[2] in module DEMOD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port op[1] in module DEMOD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port op[0] in module DEMOD is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1419.340 ; gain = 669.391
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1419.340 ; gain = 669.391
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1419.340 ; gain = 669.391
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.311 . Memory (MB): peak = 1419.340 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 833 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [c:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.gen/sources_1/ip/blk_cpu_stacks_1/blk_cpu_stacks/blk_cpu_stacks_in_context.xdc] for cell 'gps/cpu/cpu_stacks'
+Finished Parsing XDC File [c:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.gen/sources_1/ip/blk_cpu_stacks_1/blk_cpu_stacks/blk_cpu_stacks_in_context.xdc] for cell 'gps/cpu/cpu_stacks'
+Parsing XDC File [c:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.gen/sources_1/ip/blk_cpu_ram/blk_cpu_ram/blk_cpu_ram_in_context.xdc] for cell 'gps/cpu/cpu_ram'
+Finished Parsing XDC File [c:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.gen/sources_1/ip/blk_cpu_ram/blk_cpu_ram/blk_cpu_ram_in_context.xdc] for cell 'gps/cpu/cpu_ram'
+Parsing XDC File [c:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.gen/sources_1/ip/blk_logger_ram/blk_logger_ram/blk_logger_ram_in_context.xdc] for cell 'gps/log/logger_ram'
+Finished Parsing XDC File [c:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.gen/sources_1/ip/blk_logger_ram/blk_logger_ram/blk_logger_ram_in_context.xdc] for cell 'gps/log/logger_ram'
+Parsing XDC File [c:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.gen/sources_1/ip/blk_host_fifo/blk_host_fifo/blk_host_fifo_in_context.xdc] for cell 'gps/host_fifo'
+Finished Parsing XDC File [c:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.gen/sources_1/ip/blk_host_fifo/blk_host_fifo/blk_host_fifo_in_context.xdc] for cell 'gps/host_fifo'
+Parsing XDC File [c:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.gen/sources_1/ip/blk_sampler_ram/blk_sampler_ram/blk_sampler_ram_in_context.xdc] for cell 'gps/sampler/SR[0].sampler_ram'
+Finished Parsing XDC File [c:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.gen/sources_1/ip/blk_sampler_ram/blk_sampler_ram/blk_sampler_ram_in_context.xdc] for cell 'gps/sampler/SR[0].sampler_ram'
+Parsing XDC File [c:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.gen/sources_1/ip/blk_sampler_ram/blk_sampler_ram/blk_sampler_ram_in_context.xdc] for cell 'gps/sampler/SR[1].sampler_ram'
+Finished Parsing XDC File [c:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.gen/sources_1/ip/blk_sampler_ram/blk_sampler_ram/blk_sampler_ram_in_context.xdc] for cell 'gps/sampler/SR[1].sampler_ram'
+Parsing XDC File [c:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.gen/sources_1/ip/blk_sampler_ram/blk_sampler_ram/blk_sampler_ram_in_context.xdc] for cell 'gps/sampler/SR[2].sampler_ram'
+Finished Parsing XDC File [c:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.gen/sources_1/ip/blk_sampler_ram/blk_sampler_ram/blk_sampler_ram_in_context.xdc] for cell 'gps/sampler/SR[2].sampler_ram'
+Parsing XDC File [c:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.gen/sources_1/ip/blk_sampler_ram/blk_sampler_ram/blk_sampler_ram_in_context.xdc] for cell 'gps/sampler/SR[3].sampler_ram'
+Finished Parsing XDC File [c:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.gen/sources_1/ip/blk_sampler_ram/blk_sampler_ram/blk_sampler_ram_in_context.xdc] for cell 'gps/sampler/SR[3].sampler_ram'
+Parsing XDC File [c:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_board.xdc] for cell 'xco_mmcm/inst'
+Finished Parsing XDC File [c:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_board.xdc] for cell 'xco_mmcm/inst'
+Parsing XDC File [c:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc] for cell 'xco_mmcm/inst'
+Finished Parsing XDC File [c:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc] for cell 'xco_mmcm/inst'
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [c:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/Frac7_GPS_top_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/Frac7_GPS_top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+INFO: [Timing 38-2] Deriving generated clocks
+Parsing XDC File [C:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.srcs/constrs_1/new/fr.xdc]
+Finished Parsing XDC File [C:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.srcs/constrs_1/new/fr.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.srcs/constrs_1/new/fr.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/Frac7_GPS_top_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/Frac7_GPS_top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Parsing XDC File [C:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.runs/synth_1/dont_touch.xdc]
+Finished Parsing XDC File [C:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.runs/synth_1/dont_touch.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.runs/synth_1/dont_touch.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/Frac7_GPS_top_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/Frac7_GPS_top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.011 . Memory (MB): peak = 1501.266 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.215 . Memory (MB): peak = 1501.266 ; gain = 0.000
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:45 ; elapsed = 00:00:48 . Memory (MB): peak = 1501.266 ; gain = 751.316
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a100tcsg324-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:45 ; elapsed = 00:00:48 . Memory (MB): peak = 1501.266 ; gain = 751.316
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:45 ; elapsed = 00:00:48 . Memory (MB): peak = 1501.266 ; gain = 751.316
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:47 ; elapsed = 00:00:50 . Memory (MB): peak = 1501.266 ; gain = 751.316
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   17 Bit       Adders := 1     
+	   2 Input   15 Bit       Adders := 1     
+	   3 Input   14 Bit       Adders := 72    
+	   2 Input   12 Bit       Adders := 1     
+	   2 Input   11 Bit       Adders := 2     
+	   2 Input   10 Bit       Adders := 4     
+	   4 Input    8 Bit       Adders := 2     
+	   2 Input    4 Bit       Adders := 24    
++---XORs : 
+	   2 Input     14 Bit         XORs := 1     
+	   2 Input      1 Bit         XORs := 536   
+	   6 Input      1 Bit         XORs := 12    
+	   3 Input      1 Bit         XORs := 12    
++---Registers : 
+	              204 Bit    Registers := 1     
+	               84 Bit    Registers := 12    
+	               32 Bit    Registers := 39    
+	               16 Bit    Registers := 1     
+	               14 Bit    Registers := 73    
+	               13 Bit    Registers := 2     
+	               12 Bit    Registers := 1     
+	               10 Bit    Registers := 40    
+	                8 Bit    Registers := 3     
+	                6 Bit    Registers := 2     
+	                4 Bit    Registers := 25    
+	                3 Bit    Registers := 4     
+	                2 Bit    Registers := 3     
+	                1 Bit    Registers := 154   
++---Muxes : 
+	   2 Input  204 Bit        Muxes := 1     
+	   2 Input   84 Bit        Muxes := 12    
+	   2 Input   32 Bit        Muxes := 10    
+	   3 Input   32 Bit        Muxes := 2     
+	   2 Input   16 Bit        Muxes := 5     
+	   2 Input   14 Bit        Muxes := 73    
+	   2 Input   13 Bit        Muxes := 2     
+	   2 Input   10 Bit        Muxes := 3     
+	   2 Input    6 Bit        Muxes := 1     
+	   2 Input    5 Bit        Muxes := 1     
+	   3 Input    2 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 32    
+	   3 Input    1 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 240 (col length:80)
+BRAMs: 270 (col length: RAMB18 80 RAMB36 40)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+DSP Report: Generating DSP nos_x_tos, operation Mode is: A*B.
+DSP Report: operator nos_x_tos is absorbed into DSP nos_x_tos.
+WARNING: [Synth 8-7129] Port op[15] in module DEMOD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port op[14] in module DEMOD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port op[13] in module DEMOD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port op[12] in module DEMOD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port op[11] in module DEMOD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port op[10] in module DEMOD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port op[9] in module DEMOD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port op[8] in module DEMOD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port op[3] in module DEMOD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port op[2] in module DEMOD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port op[1] in module DEMOD is either unconnected or has no load
+WARNING: [Synth 8-7129] Port op[0] in module DEMOD is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:13 ; elapsed = 00:01:20 . Memory (MB): peak = 1583.504 ; gain = 833.555
+---------------------------------------------------------------------------------
+ Sort Area is  nos_x_tos_0 : 0 0 : 1937 1937 : Used 1 time 0
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+DSP: Preliminary Mapping Report (see note below. The ' indicates corresponding REG is set)
++------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name | DSP Mapping | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|CPU         | A*B         | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 0    | 0    | 
++------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+Note: The table above is a preliminary report that shows the DSPs inferred at the current stage of the synthesis flow. Some DSP may be reimplemented as non DSP primitives later in the synthesis flow. Multiple instantiated DSPs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:35 ; elapsed = 00:01:43 . Memory (MB): peak = 1680.582 ; gain = 930.633
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:01:46 ; elapsed = 00:01:55 . Memory (MB): peak = 1788.422 ; gain = 1038.473
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:01:52 ; elapsed = 00:02:01 . Memory (MB): peak = 1798.457 ; gain = 1048.508
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:02:06 ; elapsed = 00:02:16 . Memory (MB): peak = 1965.250 ; gain = 1215.301
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:02:06 ; elapsed = 00:02:16 . Memory (MB): peak = 1965.250 ; gain = 1215.301
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:02:07 ; elapsed = 00:02:18 . Memory (MB): peak = 1965.250 ; gain = 1215.301
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:02:08 ; elapsed = 00:02:18 . Memory (MB): peak = 1965.250 ; gain = 1215.301
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:02:08 ; elapsed = 00:02:19 . Memory (MB): peak = 1965.250 ; gain = 1215.301
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:02:08 ; elapsed = 00:02:19 . Memory (MB): peak = 1965.250 ; gain = 1215.301
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Static Shift Register Report:
++--------------+--------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|Module Name   | RTL Name           | Length | Width | Reset Signal | Pull out first Reg | Pull out last Reg | SRL16E | SRLC32E | 
++--------------+--------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|Frac7_GPS_top | gps/ha_dosr_reg[2] | 3      | 1     | NO           | NO                 | YES               | 1      | 0       | 
++--------------+--------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+DSP Final Report (the ' indicates corresponding REG is set)
++------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name | DSP Mapping | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|CPU         | A'*B'       | 30     | 18     | -      | -      | 32     | 1    | 1    | -    | -    | -     | 0    | 0    | 
++------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+
+Report BlackBoxes: 
++------+----------------+----------+
+|      |BlackBox name   |Instances |
++------+----------------+----------+
+|1     |blk_host_fifo   |         1|
+|2     |blk_cpu_stacks  |         1|
+|3     |blk_cpu_ram     |         1|
+|4     |blk_logger_ram  |         1|
+|5     |blk_sampler_ram |         4|
++------+----------------+----------+
+
+Report Cell Usage: 
++------+----------------+------+
+|      |Cell            |Count |
++------+----------------+------+
+|1     |blk_cpu_ram     |     1|
+|2     |blk_cpu_stacks  |     1|
+|3     |blk_host_fifo   |     1|
+|4     |blk_logger_ram  |     1|
+|5     |blk_sampler_ram |     4|
+|9     |BUFG            |     3|
+|10    |CARRY4          |   406|
+|11    |DSP48E1         |     1|
+|12    |LUT1            |    22|
+|13    |LUT2            |  1912|
+|14    |LUT3            |  2178|
+|15    |LUT4            |   360|
+|16    |LUT5            |   172|
+|17    |LUT6            |   438|
+|18    |MMCME2_ADV      |     1|
+|19    |MUXCY           |   416|
+|20    |SRL16E          |     1|
+|21    |XORCY           |   416|
+|22    |FDCE            |    22|
+|23    |FDPE            |     2|
+|24    |FDRE            |  4351|
+|25    |FDSE            |   251|
+|26    |IBUF            |    11|
+|27    |OBUF            |     9|
+|28    |OBUFT           |     1|
++------+----------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:02:08 ; elapsed = 00:02:19 . Memory (MB): peak = 1965.250 ; gain = 1215.301
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 12 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:01:40 ; elapsed = 00:02:09 . Memory (MB): peak = 1965.250 ; gain = 1133.375
+Synthesis Optimization Complete : Time (s): cpu = 00:02:09 ; elapsed = 00:02:20 . Memory (MB): peak = 1965.250 ; gain = 1215.301
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.381 . Memory (MB): peak = 1965.250 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 1240 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 1 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.012 . Memory (MB): peak = 1983.105 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 104 instances were transformed.
+  (MUXCY,XORCY) => CARRY4: 104 instances
+
+Synth Design complete | Checksum: 123297c3
+INFO: [Common 17-83] Releasing license: Synthesis
+66 Infos, 27 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:02:26 ; elapsed = 00:02:42 . Memory (MB): peak = 1983.105 ; gain = 1439.730
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.123 . Memory (MB): peak = 1983.105 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'C:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.runs/synth_1/Frac7_GPS_top.dcp' has been generated.
+INFO: [Vivado 12-24828] Executing command : report_utilization -file Frac7_GPS_top_utilization_synth.rpt -pb Frac7_GPS_top_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Tue Sep  8 17:16:08 2026...
