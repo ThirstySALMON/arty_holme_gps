@@ -2,65 +2,21 @@
 // Homemade GPS Receiver
 // Copyright (C) 2013 Andrew Holme
 //
-// This program is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
+// user.cpp — Pi 3 / no-LCD port. The original drove a 16x2 LCD via the
+// Frac7 board. This build has no LCD, so UserStat() (the receiver's data
+// sink, called from solve.cpp/channel.cpp) and UserTask() are kept but
+// print fixes to the terminal instead. STAT enum handling is unchanged so
+// all existing UserStat() call sites still resolve.
 //
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program.  If not, see <http://www.gnu.org/licenses/>.
-//
-// http://www.aholme.co.uk/GPS/Main.htm
+// GPL v3 (inherits original license). http://www.aholme.co.uk/GPS/Main.htm
 //////////////////////////////////////////////////////////////////////////
 
 #include <unistd.h>
 #include <stdio.h>
 #include <math.h>
 
-#include "LiquidCrystal.h"
-#include "Print.h"
 #include "gps.h"
 #include "spi.h"
-
-///////////////////////////////////////////////////////////////////////////////////////////////
-
-enum {
-    LCD_D4=0, LCD_D5=1, LCD_D6=2, LCD_D7=3,
-    LCD_EN=4,
-    LCD_RS=5
-};
-
-///////////////////////////////////////////////////////////////////////////////////////////////
-
-void Print::digitalWrite(int pin, int state) {
-    static int reg;
-    reg&=~(1<<pin);
-    reg|=state<<pin;
-    if (pin==LCD_EN) spi_set(CmdSetLCD, reg);
-}
-
-void Print::delayMicroseconds(int n) {
-    if (n>1) usleep(n);
-}
-
-///////////////////////////////////////////////////////////////////////////////////////////////
-
-struct DISPLAY : LiquidCrystal {
-    DISPLAY () : LiquidCrystal(LCD_RS, LCD_EN, LCD_D4, LCD_D5, LCD_D6, LCD_D7) {
-        begin(16, 2);
-        createBars();
-    }
-
-    void drawForm(int);
-    void drawData(int);
-    void createBars();
-    void writeAt(int x, int y, const char *s);
-};
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -81,22 +37,23 @@ struct UMS {
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
-static int    StatBars[NUM_CHANS];
-
 static double StatSNR, StatSec, StatLat, StatLon, StatAlt;
 static int    StatPRN, StatDay, StatNS,  StatEW,  StatChans;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
+// Data sink — solve.cpp / channel.cpp report results here. Same switch as
+// the original; instead of updating LCD state we stash values and print.
 
 void UserStat(STAT st, double d, int i) {
     switch(st) {
         case STAT_PRN:
             StatPRN = i;
             StatSNR = d;
+            printf("[PRN] sat %2d  SNR %5.1f\n", StatPRN, StatSNR);
             EventRaise(EVT_PRN);
             break;
         case STAT_POWER:
-            StatBars[i] = MIN(sqrt(d)/300,7);
+            // per-channel signal power (was LCD bar graph); print occasionally
             EventRaise(EVT_BARS);
             break;
         case STAT_LAT:
@@ -110,141 +67,39 @@ void UserStat(STAT st, double d, int i) {
         case STAT_ALT:
             StatAlt = d;
             StatChans = i;
+            {
+                UMS lat(StatLat), lon(StatLon);
+                printf("[FIX] %2d ch  "
+                       "%2d\xC2\xB0%02d'%06.3f\"%c  "
+                       "%3d\xC2\xB0%02d'%06.3f\"%c  "
+                       "alt %.1f m\n",
+                       StatChans,
+                       lat.u, lat.m, lat.s, (char)StatNS,
+                       lon.u, lon.m, lon.s, (char)StatEW,
+                       StatAlt);
+            }
             EventRaise(EVT_POS);
             break;
         case STAT_TIME:
             StatDay = d/(60*60*24);
             StatSec = d-(60*60*24)*StatDay;
+            {
+                UMS hms(StatSec/60/60);
+                printf("[TIME] %s %02d:%02d:%02.0f UTC\n",
+                       Week[StatDay % 7], hms.u, hms.m, hms.s);
+            }
             EventRaise(EVT_TIME);
             break;
     }
+    fflush(stdout);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
-
-void DISPLAY::writeAt(int x, int y, const char *s) {
-    setCursor(x, y);
-    while(*s) write(*s++);
-}
-
-///////////////////////////////////////////////////////////////////////////////////////////////
-
-void DISPLAY::createBars() {
-    const char *bars[8] = {
-        "\x00\x00\x00\x00\x00\x00\x00\x1f",
-        "\x00\x00\x00\x00\x00\x00\x1f\x1f",
-        "\x00\x00\x00\x00\x00\x1f\x1f\x1f",
-        "\x00\x00\x00\x00\x1f\x1f\x1f\x1f",
-        "\x00\x00\x00\x1f\x1f\x1f\x1f\x1f",
-        "\x00\x00\x1f\x1f\x1f\x1f\x1f\x1f",
-        "\x00\x1f\x1f\x1f\x1f\x1f\x1f\x1f",
-        "\x1f\x1f\x1f\x1f\x1f\x1f\x1f\x1f"
-    };
-
-    for (int i=0; i<8; i++)
-        createChar(i, (uint8_t*) bars[i]);
- }
-
-///////////////////////////////////////////////////////////////////////////////////////////////
-
-void DISPLAY::drawForm(int page) {
-    clear();
-    switch(page) {
-        case -2:
-            writeAt(0, 0, "  Homemade GPS  ");
-            writeAt(0, 1, "A.Holme May 2013");
-            break;
-        case -1:
-            writeAt(0, 0, "Shutdown");
-            break;
-        case 0:
-            writeAt(0, 0, "PRN __ ___");
-            writeAt(0, 1, "____________");
-            break;
-        case 1:
-            writeAt(0, 0, "_     __._____ _");
-            writeAt(0, 1, "_     __._____ _");
-            break;
-        case 2:
-            writeAt(0, 0, "__\xDF __\xDF __.___ _");
-            writeAt(0, 1, "__\xDF __\xDF __.___ _");
-            break;
-        case 3:
-            break;
-    }
-}
-
-///////////////////////////////////////////////////////////////////////////////////////////////
-
-void DISPLAY::drawData(int page) {
-    char s[80];
-    switch(page) {
-        case 0:
-            if (EventCatch(EVT_PRN)) {
-                sprintf(s, "%2d %3.0f", StatPRN, StatSNR);
-                writeAt(4, 0, s);
-            }
-            if (EventCatch(EVT_BARS)) {
-                setCursor(0, 1);
-                for (int i=0; i<NUM_CHANS; i++) write(StatBars[i]);
-            }
-            break;
-        case 1:
-            if (EventCatch(EVT_POS)) {
-                sprintf(s, "%-5d %8.5f %c", StatChans, StatLat, StatNS);
-                writeAt(0, 0, s);
-                sprintf(s, "%-5.0f %8.5f %c", StatAlt, StatLon, StatEW);
-                writeAt(0, 1, s);
-            }
-            break;
-        case 2:
-            if (EventCatch(EVT_POS)) {
-                UMS lat(StatLat), lon(StatLon);
-                sprintf(s, "%2d\xDF%3d\xDF%7.3f %c", lat.u, lat.m, lat.s, StatNS);
-                writeAt(0, 0, s);
-                sprintf(s, "%2d\xDF%3d\xDF%7.3f %c", lon.u, lon.m, lon.s, StatEW);
-                writeAt(0, 1, s);
-            }
-            break;
-        case 3:
-            if (EventCatch(EVT_TIME)) {
-                UMS hms(StatSec/60/60);
-                sprintf(s, "%s %02d:%02d:%02.0f", Week[StatDay], hms.u, hms.m, hms.s);
-                writeAt(0, 0, s);
-            }
-    }
-}
-
-///////////////////////////////////////////////////////////////////////////////////////////////
+// No LCD, no joystick UI. Keep UserTask alive so main's CreateTask(UserTask)
+// links and runs; it just yields. Position is printed from UserStat above.
 
 void UserTask() {
-    DISPLAY lcd;
-    int page=0;
-
-    lcd.drawForm(-2);
-    for (int i=0; i<30; i++) {
-        TimerWait(100);
-        if (EventCatch(JOY_MASK)) {
-            EventRaise(EVT_EXIT);
-            for (;;) NextTask();
-        }
-    }
-    lcd.drawForm(page);
     for (;;) {
-        switch (EventCatch(JOY_MASK)) {
-            case JOY_UP:
-                if (page>0) lcd.drawForm(--page);
-                break;
-            case JOY_DOWN:
-                if (page<3) lcd.drawForm(++page);
-                break;
-            case JOY_PUSH:
-                lcd.drawForm(-1);
-                EventRaise(EVT_EXIT+EVT_SHUTDOWN);
-                for (;;) NextTask();
-
-        }
-        lcd.drawData(page);
         NextTask();
     }
 }

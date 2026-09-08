@@ -27,28 +27,22 @@
 
 int fpga_init() {
 
+int fpga_init() {
     char s[2049];
     FILE *fp;
     int n;
 
-    fp = fopen("24.bit", "rb"); // FPGA configuration bitstream
-    if (!fp) return -1;
+    // Arty is programmed over USB-JTAG from Vivado — skip Pi-driven bitstream load.
+    // (Original opened "24.bit" here and streamed it via SPI_CS0.)
 
-    for (;;) {
-        n = fread(s, 1, 2048, fp);
-        if (n<=0) break;
-        peri_spi(SPI_CS0, s, n, s, n);
-    }
-
-    fclose(fp);
-
-    fp = fopen("44.com", "rb"); // Embedded CPU binary
+    fp = fopen("GPS44.com", "rb"); // Embedded CPU binary
     if (!fp) return -2;
 
     n = fread(s, 1, 2048, fp);
     peri_spi(SPI_CS0, s, n+1, s, n+1);
 
     return fclose(fp);
+}
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
