@@ -1,5 +1,5 @@
 ##########################################################################
-## Homemade GPS Receiver - Andrew Holme (GPL v3)
+## Homemade GPS Receiver — Andrew Holme (GPL v3)
 ## FULL Frac7 board top on Arty A7-100T (xc7a100tcsg324-1), Vivado 2025.2.
 ##
 ## ALL ports single-ended LVCMOS33 -> no bank VCCO conflict (fixes BIVC-1).
@@ -20,7 +20,7 @@
 
 ## ---- Clock ----
 set_property -dict { PACKAGE_PIN E3  IOSTANDARD LVCMOS33 } [get_ports { XCO }]
-## NOTE: do NOT create_clock on XCO here - the clk_wiz_0 IP already defines
+## NOTE: do NOT create_clock on XCO here — the clk_wiz_0 IP already defines
 ## the 100 MHz input clock and its 10 MHz generated output. A manual
 ## create_clock here produced duplicate generated clocks (clk_out1_clk_wiz_0
 ## and _1) -> the TIMING-56 / "no common primary clock" warnings.

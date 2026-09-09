@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2025.2 (win64) Build 6299465 Fri Nov 14 19:35:11 GMT 2025
-| Date         : Tue Sep  8 17:26:39 2026
+| Date         : Wed Sep  9 11:16:32 2026
 | Host         : DESKTOP-EALFKFH running 64-bit major release  (build 9200)
 | Command      : report_utilization -file Frac7_GPS_top_utilization_placed.rpt -pb Frac7_GPS_top_utilization_placed.pb
 | Design       : Frac7_GPS_top
@@ -73,9 +73,9 @@ Table of Contents
 +--------------------------------------------+------+-------+------------+-----------+-------+
 |                  Site Type                 | Used | Fixed | Prohibited | Available | Util% |
 +--------------------------------------------+------+-------+------------+-----------+-------+
-| Slice                                      | 1180 |     0 |          0 |     15850 |  7.44 |
-|   SLICEL                                   |  796 |     0 |            |           |       |
-|   SLICEM                                   |  384 |     0 |            |           |       |
+| Slice                                      | 1176 |     0 |          0 |     15850 |  7.42 |
+|   SLICEL                                   |  793 |     0 |            |           |       |
+|   SLICEM                                   |  383 |     0 |            |           |       |
 | LUT as Logic                               | 3347 |     0 |          0 |     63400 |  5.28 |
 |   using O5 output only                     |    0 |       |            |           |       |
 |   using O6 output only                     | 1609 |       |            |           |       |
@@ -90,10 +90,10 @@ Table of Contents
 |     using O6 output only                   |    0 |       |            |           |       |
 |     using O5 and O6                        |    0 |       |            |           |       |
 | Slice Registers                            | 4631 |     0 |          0 |    126800 |  3.65 |
-|   Register driven from within the Slice    | 3392 |       |            |           |       |
-|   Register driven from outside the Slice   | 1239 |       |            |           |       |
-|     LUT in front of the register is unused | 1020 |       |            |           |       |
-|     LUT in front of the register is used   |  219 |       |            |           |       |
+|   Register driven from within the Slice    | 3393 |       |            |           |       |
+|   Register driven from outside the Slice   | 1238 |       |            |           |       |
+|     LUT in front of the register is unused | 1021 |       |            |           |       |
+|     LUT in front of the register is used   |  217 |       |            |           |       |
 +--------------------------------------------+------+-------+------------+-----------+-------+
 
 
@@ -225,6 +225,7 @@ Table of Contents
 |     Ref Name    | Used |
 +-----------------+------+
 | blk_sampler_ram |    4 |
+| clk_wiz_0       |    1 |
 | blk_logger_ram  |    1 |
 | blk_host_fifo   |    1 |
 | blk_cpu_stacks  |    1 |

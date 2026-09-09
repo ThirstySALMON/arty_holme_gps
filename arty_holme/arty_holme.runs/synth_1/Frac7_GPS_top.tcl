@@ -59,7 +59,11 @@ OPTRACE "synth_1" START { ROLLUP_AUTO }
 set_param checkpoint.writeSynthRtdsInDcp 1
 set_param general.usePosixSpawnForFork 1
 set_param chipscope.maxJobs 1
+set_param synth.incrementalSynthesisCache C:/Users/OIE/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-22212-DESKTOP-EALFKFH/incrSyn
+set_param xicom.use_bs_reader 1
 set_msg_config -id {Common 17-41} -limit 10000000
+set_msg_config -id {Synth 8-256} -limit 10000
+set_msg_config -id {Synth 8-638} -limit 10000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a100tcsg324-1
 
@@ -88,25 +92,25 @@ read_verilog -library xil_defaultlib {
   C:/Users/OIE/Desktop/arty_holme_gps/rtl/SAMPLER.v
   C:/Users/OIE/Desktop/arty_holme_gps/rtl/Frac7_GPS_top.v
 }
-read_ip -quiet c:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
+read_ip -quiet C:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.srcs/sources_1/ip/blk_cpu_stacks_1/blk_cpu_stacks.xci
+set_property used_in_implementation false [get_files -all c:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.gen/sources_1/ip/blk_cpu_stacks_1/blk_cpu_stacks_ooc.xdc]
+
+read_ip -quiet C:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.srcs/sources_1/ip/blk_cpu_ram/blk_cpu_ram.xci
+set_property used_in_implementation false [get_files -all c:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.gen/sources_1/ip/blk_cpu_ram/blk_cpu_ram_ooc.xdc]
+
+read_ip -quiet C:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.srcs/sources_1/ip/blk_logger_ram/blk_logger_ram.xci
+set_property used_in_implementation false [get_files -all c:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.gen/sources_1/ip/blk_logger_ram/blk_logger_ram_ooc.xdc]
+
+read_ip -quiet C:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.srcs/sources_1/ip/blk_host_fifo/blk_host_fifo.xci
+set_property used_in_implementation false [get_files -all c:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.gen/sources_1/ip/blk_host_fifo/blk_host_fifo_ooc.xdc]
+
+read_ip -quiet C:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.srcs/sources_1/ip/blk_sampler_ram/blk_sampler_ram.xci
+set_property used_in_implementation false [get_files -all c:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.gen/sources_1/ip/blk_sampler_ram/blk_sampler_ram_ooc.xdc]
+
+read_ip -quiet C:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
 set_property used_in_implementation false [get_files -all c:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_board.xdc]
 set_property used_in_implementation false [get_files -all c:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc]
 set_property used_in_implementation false [get_files -all c:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_ooc.xdc]
-
-read_ip -quiet c:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.srcs/sources_1/ip/blk_cpu_stacks_1/blk_cpu_stacks.xci
-set_property used_in_implementation false [get_files -all c:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.gen/sources_1/ip/blk_cpu_stacks_1/blk_cpu_stacks_ooc.xdc]
-
-read_ip -quiet c:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.srcs/sources_1/ip/blk_cpu_ram/blk_cpu_ram.xci
-set_property used_in_implementation false [get_files -all c:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.gen/sources_1/ip/blk_cpu_ram/blk_cpu_ram_ooc.xdc]
-
-read_ip -quiet c:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.srcs/sources_1/ip/blk_logger_ram/blk_logger_ram.xci
-set_property used_in_implementation false [get_files -all c:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.gen/sources_1/ip/blk_logger_ram/blk_logger_ram_ooc.xdc]
-
-read_ip -quiet c:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.srcs/sources_1/ip/blk_host_fifo/blk_host_fifo.xci
-set_property used_in_implementation false [get_files -all c:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.gen/sources_1/ip/blk_host_fifo/blk_host_fifo_ooc.xdc]
-
-read_ip -quiet c:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.srcs/sources_1/ip/blk_sampler_ram/blk_sampler_ram.xci
-set_property used_in_implementation false [get_files -all c:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.gen/sources_1/ip/blk_sampler_ram/blk_sampler_ram_ooc.xdc]
 
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -117,11 +121,9 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc C:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.srcs/constrs_1/new/fr.xdc
-set_property used_in_implementation false [get_files C:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.srcs/constrs_1/new/fr.xdc]
+read_xdc C:/Users/OIE/Desktop/arty_holme_gps/rtl/inject_top.xdc
+set_property used_in_implementation false [get_files C:/Users/OIE/Desktop/arty_holme_gps/rtl/inject_top.xdc]
 
-read_xdc dont_touch.xdc
-set_property used_in_implementation false [get_files dont_touch.xdc]
 set_param ips.enableIPCacheLiteLoad 1
 
 read_checkpoint -auto_incremental -incremental C:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.srcs/utils_1/imports/synth_1/Frac7_GPS_top.dcp

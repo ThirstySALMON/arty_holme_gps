@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2025.2 (win64) Build 6299465 Fri Nov 14 19:35:11 GMT 2025
-| Date         : Tue Sep  8 17:26:39 2026
+| Date         : Wed Sep  9 11:16:32 2026
 | Host         : DESKTOP-EALFKFH running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file Frac7_GPS_top_control_sets_placed.rpt
 | Design       : Frac7_GPS_top
@@ -58,10 +58,10 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |            1629 |          480 |
+| No           | No                    | No                     |            1629 |          481 |
 | No           | No                    | Yes                    |              24 |            7 |
 | No           | Yes                   | No                     |              48 |           17 |
-| Yes          | No                    | No                     |            2275 |          428 |
+| Yes          | No                    | No                     |            2275 |          423 |
 | Yes          | No                    | Yes                    |               0 |            0 |
 | Yes          | Yes                   | No                     |             655 |          154 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
@@ -77,102 +77,102 @@ Table of Contents
 |  xco_mmcm/inst/clk_out1 | gps/cpu/rst_reg[2]_5[0]               |                        |                1 |              4 |         4.00 |
 |  xco_mmcm/inst/clk_out1 | gps/cpu/rst_reg[2]_4[0]               |                        |                2 |              6 |         3.00 |
 |  gps/ha_clk             |                                       |                        |                3 |              7 |         2.33 |
+|  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[2]_7[0]          |                        |                2 |              8 |         4.00 |
+|  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[2]_4[0]          |                        |                2 |              8 |         4.00 |
+|  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[3]_3[0]          |                        |                2 |              8 |         4.00 |
+|  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[3]_6[0]          |                        |                2 |              8 |         4.00 |
 |  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[3]_12[0]         |                        |                2 |              8 |         4.00 |
 |  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[3]_9[0]          |                        |                2 |              8 |         4.00 |
-|  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[2]_10[0]         |                        |                2 |              8 |         4.00 |
-|  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[2]_16[0]         |                        |                1 |              8 |         8.00 |
-|  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[2]_4[0]          |                        |                2 |              8 |         4.00 |
-|  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[2]_13[0]         |                        |                2 |              8 |         4.00 |
 |  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[2]_1[0]          |                        |                2 |              8 |         4.00 |
+|  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[2]_13[0]         |                        |                2 |              8 |         4.00 |
+|  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[2]_10[0]         |                        |                2 |              8 |         4.00 |
 |  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[0]_4[0]          |                        |                4 |              8 |         2.00 |
+|  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[2]_16[0]         |                        |                1 |              8 |         8.00 |
 |  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[0]_1[0]          |                        |                2 |              8 |         4.00 |
-|  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[3]_3[0]          |                        |                2 |              8 |         4.00 |
-|  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[2]_7[0]          |                        |                2 |              8 |         4.00 |
-|  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[3]_6[0]          |                        |                2 |              8 |         4.00 |
 |  xco_mmcm/inst/clk_out1 |                                       | gps/cpu/pc[10]_i_1_n_0 |                6 |             10 |         1.67 |
 |  xco_mmcm/inst/clk_out1 |                                       | gps/cpu/SR[0]          |                4 |             10 |         2.50 |
-|  xco_mmcm/inst/clk_out1 | gps/cpu/E[0]                          | gps/cpu/SR[0]          |                2 |             11 |         5.50 |
-|  xco_mmcm/inst/clk_out1 | gps/demod[3]/ca_nco[30]/E[0]          |                        |                2 |             11 |         5.50 |
-|  xco_mmcm/inst/clk_out1 | gps/demod[10]/ca_nco[30]/E[0]         |                        |                2 |             11 |         5.50 |
 |  xco_mmcm/inst/clk_out1 | gps/demod[5]/ca_nco[30]/E[0]          |                        |                2 |             11 |         5.50 |
-|  xco_mmcm/inst/clk_out1 | gps/demod[4]/ca_nco[30]/E[0]          |                        |                4 |             11 |         2.75 |
-|  xco_mmcm/inst/clk_out1 | gps/demod[1]/ca_nco[30]/E[0]          |                        |                2 |             11 |         5.50 |
-|  xco_mmcm/inst/clk_out1 | gps/demod[2]/ca_nco[30]/E[0]          |                        |                2 |             11 |         5.50 |
-|  xco_mmcm/inst/clk_out1 | gps/demod[6]/ca_nco[30]/E[0]          |                        |                3 |             11 |         3.67 |
-|  xco_mmcm/inst/clk_out1 | gps/demod[11]/ca_nco[30]/E[0]         |                        |                2 |             11 |         5.50 |
-|  xco_mmcm/inst/clk_out1 | gps/demod[7]/ca_nco[30]/E[0]          |                        |                3 |             11 |         3.67 |
 |  xco_mmcm/inst/clk_out1 | gps/demod[9]/ca_nco[30]/E[0]          |                        |                2 |             11 |         5.50 |
+|  xco_mmcm/inst/clk_out1 | gps/demod[10]/ca_nco[30]/E[0]         |                        |                2 |             11 |         5.50 |
+|  xco_mmcm/inst/clk_out1 | gps/demod[1]/ca_nco[30]/E[0]          |                        |                2 |             11 |         5.50 |
+|  xco_mmcm/inst/clk_out1 | gps/cpu/E[0]                          | gps/cpu/SR[0]          |                2 |             11 |         5.50 |
+|  xco_mmcm/inst/clk_out1 | gps/demod[2]/ca_nco[30]/E[0]          |                        |                2 |             11 |         5.50 |
 |  xco_mmcm/inst/clk_out1 | gps/demod[0]/ca_nco[30]/E[0]          |                        |                4 |             11 |         2.75 |
+|  xco_mmcm/inst/clk_out1 | gps/demod[7]/ca_nco[30]/E[0]          |                        |                3 |             11 |         3.67 |
 |  xco_mmcm/inst/clk_out1 | gps/demod[8]/ca_nco[30]/E[0]          |                        |                2 |             11 |         5.50 |
+|  xco_mmcm/inst/clk_out1 | gps/demod[6]/ca_nco[30]/E[0]          |                        |                3 |             11 |         3.67 |
+|  xco_mmcm/inst/clk_out1 | gps/demod[11]/ca_nco[30]/E[0]         |                        |                3 |             11 |         3.67 |
+|  xco_mmcm/inst/clk_out1 | gps/demod[3]/ca_nco[30]/E[0]          |                        |                2 |             11 |         5.50 |
+|  xco_mmcm/inst/clk_out1 | gps/demod[4]/ca_nco[30]/E[0]          |                        |                3 |             11 |         3.67 |
 |  xco_mmcm/inst/clk_out1 |                                       | gps/cpu/sampler_rst    |                3 |             12 |         4.00 |
 |  xco_mmcm/inst/clk_out1 | gps/cpu/rst_reg[2]_6[0]               |                        |                3 |             12 |         4.00 |
 |  xco_mmcm/inst/clk_out1 | gps/cpu/ser_sel_reg[1][0]             |                        |                3 |             13 |         4.33 |
 |  xco_mmcm/inst/clk_out1 |                                       | gps/cpu/SS[0]          |                4 |             16 |         4.00 |
 |  xco_mmcm/inst/clk_out1 | gps/sampler/SR[0].sampler_ram_i_2_n_0 | gps/cpu/sampler_rst    |                5 |             17 |         3.40 |
-|  xco_mmcm/inst/clk_out1 | gps/demod[4]/ca_nco[31]/E[0]          | gps/cpu/chan_rst[4]    |                5 |             20 |         4.00 |
-|  xco_mmcm/inst/clk_out1 | gps/demod[0]/ca_nco[31]/E[0]          | gps/cpu/chan_rst[0]    |                4 |             20 |         5.00 |
-|  xco_mmcm/inst/clk_out1 | gps/demod[11]/ca_nco[31]/E[0]         | gps/cpu/chan_rst[11]   |                4 |             20 |         5.00 |
-|  xco_mmcm/inst/clk_out1 | gps/demod[7]/ca_nco[31]/E[0]          | gps/cpu/chan_rst[7]    |                5 |             20 |         4.00 |
-|  xco_mmcm/inst/clk_out1 | gps/demod[3]/ca_nco[31]/E[0]          | gps/cpu/chan_rst[3]    |                4 |             20 |         5.00 |
-|  xco_mmcm/inst/clk_out1 | gps/demod[9]/ca_nco[31]/E[0]          | gps/cpu/chan_rst[9]    |                4 |             20 |         5.00 |
-|  xco_mmcm/inst/clk_out1 | gps/demod[2]/ca_nco[31]/E[0]          | gps/cpu/chan_rst[2]    |                3 |             20 |         6.67 |
-|  xco_mmcm/inst/clk_out1 | gps/demod[8]/ca_nco[31]/E[0]          | gps/cpu/chan_rst[8]    |                5 |             20 |         4.00 |
-|  xco_mmcm/inst/clk_out1 | gps/demod[10]/ca_nco[31]/E[0]         | gps/cpu/chan_rst[10]   |                4 |             20 |         5.00 |
 |  xco_mmcm/inst/clk_out1 | gps/demod[1]/ca_nco[31]/E[0]          | gps/cpu/chan_rst[1]    |                4 |             20 |         5.00 |
-|  xco_mmcm/inst/clk_out1 | gps/demod[5]/ca_nco[31]/E[0]          | gps/cpu/chan_rst[5]    |                5 |             20 |         4.00 |
+|  xco_mmcm/inst/clk_out1 | gps/demod[0]/ca_nco[31]/E[0]          | gps/cpu/chan_rst[0]    |                4 |             20 |         5.00 |
+|  xco_mmcm/inst/clk_out1 | gps/demod[9]/ca_nco[31]/E[0]          | gps/cpu/chan_rst[9]    |                4 |             20 |         5.00 |
+|  xco_mmcm/inst/clk_out1 | gps/demod[8]/ca_nco[31]/E[0]          | gps/cpu/chan_rst[8]    |                5 |             20 |         4.00 |
+|  xco_mmcm/inst/clk_out1 | gps/demod[4]/ca_nco[31]/E[0]          | gps/cpu/chan_rst[4]    |                5 |             20 |         4.00 |
+|  xco_mmcm/inst/clk_out1 | gps/demod[3]/ca_nco[31]/E[0]          | gps/cpu/chan_rst[3]    |                4 |             20 |         5.00 |
 |  xco_mmcm/inst/clk_out1 | gps/demod[6]/ca_nco[31]/E[0]          | gps/cpu/chan_rst[6]    |                3 |             20 |         6.67 |
+|  xco_mmcm/inst/clk_out1 | gps/demod[7]/ca_nco[31]/E[0]          | gps/cpu/chan_rst[7]    |                5 |             20 |         4.00 |
+|  xco_mmcm/inst/clk_out1 | gps/demod[10]/ca_nco[31]/E[0]         | gps/cpu/chan_rst[10]   |                4 |             20 |         5.00 |
+|  xco_mmcm/inst/clk_out1 | gps/demod[2]/ca_nco[31]/E[0]          | gps/cpu/chan_rst[2]    |                3 |             20 |         6.67 |
+|  xco_mmcm/inst/clk_out1 | gps/demod[11]/ca_nco[31]/E[0]         | gps/cpu/chan_rst[11]   |                4 |             20 |         5.00 |
+|  xco_mmcm/inst/clk_out1 | gps/demod[5]/ca_nco[31]/E[0]          | gps/cpu/chan_rst[5]    |                5 |             20 |         4.00 |
 |  gps/ha_clk             |                                       | gps/clear              |                7 |             24 |         3.43 |
-|  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[3]_8[0]          |                        |                6 |             32 |         5.33 |
-|  xco_mmcm/inst/clk_out1 | gps/demod[8]/E[0]                     | gps/cpu/chan_rst[8]    |                8 |             32 |         4.00 |
-|  xco_mmcm/inst/clk_out1 | gps/demod[10]/E[0]                    | gps/cpu/chan_rst[10]   |                8 |             32 |         4.00 |
-|  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[2]_9[0]          |                        |                6 |             32 |         5.33 |
-|  xco_mmcm/inst/clk_out1 | gps/demod[7]/E[0]                     | gps/cpu/chan_rst[7]    |                8 |             32 |         4.00 |
-|  xco_mmcm/inst/clk_out1 | gps/demod[4]/E[0]                     | gps/cpu/chan_rst[4]    |                8 |             32 |         4.00 |
-|  xco_mmcm/inst/clk_out1 | gps/demod[5]/E[0]                     | gps/cpu/chan_rst[5]    |                8 |             32 |         4.00 |
-|  xco_mmcm/inst/clk_out1 | gps/demod[6]/E[0]                     | gps/cpu/chan_rst[6]    |                8 |             32 |         4.00 |
-|  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[2]_5[0]          |                        |                6 |             32 |         5.33 |
-|  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[2]_6[0]          |                        |                5 |             32 |         6.40 |
-|  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[2]_8[0]          |                        |                7 |             32 |         4.57 |
-|  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[3]_1[0]          |                        |                6 |             32 |         5.33 |
-|  xco_mmcm/inst/clk_out1 | gps/demod[11]/E[0]                    | gps/cpu/chan_rst[11]   |                8 |             32 |         4.00 |
-|  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[3]_10[0]         |                        |                5 |             32 |         6.40 |
-|  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[2]_3[0]          |                        |                5 |             32 |         6.40 |
-|  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[3]_2[0]          |                        |                5 |             32 |         6.40 |
-|  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[2]_15[0]         |                        |                5 |             32 |         6.40 |
-|  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[3]_4[0]          |                        |                5 |             32 |         6.40 |
-|  xco_mmcm/inst/clk_out1 | gps/demod[2]/E[0]                     | gps/cpu/chan_rst[2]    |                8 |             32 |         4.00 |
-|  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[0]_0[0]          |                        |                7 |             32 |         4.57 |
-|  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[0]_3[0]          |                        |                6 |             32 |         5.33 |
-|  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[2][0]            |                        |                5 |             32 |         6.40 |
-|  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[2]_0[0]          |                        |                4 |             32 |         8.00 |
 |  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[2]_11[0]         |                        |                4 |             32 |         8.00 |
-|  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[2]_2[0]          |                        |                6 |             32 |         5.33 |
-|  xco_mmcm/inst/clk_out1 | gps/demod[1]/E[0]                     | gps/cpu/chan_rst[1]    |                8 |             32 |         4.00 |
+|  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[0]_0[0]          |                        |                7 |             32 |         4.57 |
+|  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[2]_9[0]          |                        |                6 |             32 |         5.33 |
+|  xco_mmcm/inst/clk_out1 | gps/demod[8]/E[0]                     | gps/cpu/chan_rst[8]    |                8 |             32 |         4.00 |
 |  xco_mmcm/inst/clk_out1 | gps/cpu/nos_x_tos_i_1_n_0             |                        |               16 |             32 |         2.00 |
-|  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[2]_12[0]         |                        |                6 |             32 |         5.33 |
-|  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[2]_14[0]         |                        |                5 |             32 |         6.40 |
-|  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[0][0]            |                        |                5 |             32 |         6.40 |
-|  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[0]_2[0]          |                        |                6 |             32 |         5.33 |
-|  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[3]_5[0]          |                        |                5 |             32 |         6.40 |
-|  xco_mmcm/inst/clk_out1 | gps/demod[9]/E[0]                     | gps/cpu/chan_rst[9]    |                8 |             32 |         4.00 |
+|  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[2]_6[0]          |                        |                5 |             32 |         6.40 |
+|  xco_mmcm/inst/clk_out1 | gps/demod[7]/E[0]                     | gps/cpu/chan_rst[7]    |                8 |             32 |         4.00 |
+|  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[3]_1[0]          |                        |                6 |             32 |         5.33 |
 |  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[3]_11[0]         |                        |                4 |             32 |         8.00 |
-|  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[3]_7[0]          |                        |                6 |             32 |         5.33 |
+|  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[3]_10[0]         |                        |                5 |             32 |         6.40 |
+|  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[0]_2[0]          |                        |                6 |             32 |         5.33 |
+|  xco_mmcm/inst/clk_out1 | gps/demod[6]/E[0]                     | gps/cpu/chan_rst[6]    |                8 |             32 |         4.00 |
+|  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[0]_3[0]          |                        |                6 |             32 |         5.33 |
+|  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[2]_5[0]          |                        |                6 |             32 |         5.33 |
+|  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[2]_8[0]          |                        |                7 |             32 |         4.57 |
+|  xco_mmcm/inst/clk_out1 | gps/demod[2]/E[0]                     | gps/cpu/chan_rst[2]    |                8 |             32 |         4.00 |
+|  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[0][0]            |                        |                5 |             32 |         6.40 |
+|  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[2]_3[0]          |                        |                5 |             32 |         6.40 |
 |  xco_mmcm/inst/clk_out1 | gps/demod[3]/E[0]                     | gps/cpu/chan_rst[3]    |                8 |             32 |         4.00 |
+|  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[2]_14[0]         |                        |                5 |             32 |         6.40 |
+|  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[2]_2[0]          |                        |                6 |             32 |         5.33 |
+|  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[3]_2[0]          |                        |                5 |             32 |         6.40 |
+|  xco_mmcm/inst/clk_out1 | gps/demod[4]/E[0]                     | gps/cpu/chan_rst[4]    |                8 |             32 |         4.00 |
+|  xco_mmcm/inst/clk_out1 | gps/demod[9]/E[0]                     | gps/cpu/chan_rst[9]    |                8 |             32 |         4.00 |
+|  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[3]_4[0]          |                        |                5 |             32 |         6.40 |
+|  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[3]_5[0]          |                        |                5 |             32 |         6.40 |
+|  xco_mmcm/inst/clk_out1 | gps/demod[11]/E[0]                    | gps/cpu/chan_rst[11]   |                8 |             32 |         4.00 |
+|  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[2]_15[0]         |                        |                5 |             32 |         6.40 |
+|  xco_mmcm/inst/clk_out1 | gps/demod[5]/E[0]                     | gps/cpu/chan_rst[5]    |                8 |             32 |         4.00 |
+|  xco_mmcm/inst/clk_out1 | gps/demod[1]/E[0]                     | gps/cpu/chan_rst[1]    |                8 |             32 |         4.00 |
 |  xco_mmcm/inst/clk_out1 | gps/demod[0]/E[0]                     | gps/cpu/chan_rst[0]    |                8 |             32 |         4.00 |
-|  xco_mmcm/inst/clk_out1 | gps/demod[1]/ser_iq[83]_i_1__9_n_0    |                        |               13 |             84 |         6.46 |
-|  xco_mmcm/inst/clk_out1 | gps/demod[11]/ser_iq[83]_i_1_n_0      |                        |               15 |             84 |         5.60 |
+|  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[3]_7[0]          |                        |                6 |             32 |         5.33 |
+|  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[3]_8[0]          |                        |                6 |             32 |         5.33 |
+|  xco_mmcm/inst/clk_out1 | gps/demod[10]/E[0]                    | gps/cpu/chan_rst[10]   |                8 |             32 |         4.00 |
+|  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[2]_0[0]          |                        |                4 |             32 |         8.00 |
+|  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[2][0]            |                        |                5 |             32 |         6.40 |
+|  xco_mmcm/inst/clk_out1 | gps/cpu/cmd_chan_reg[2]_12[0]         |                        |                6 |             32 |         5.33 |
+|  xco_mmcm/inst/clk_out1 | gps/demod[8]/ser_iq[83]_i_1__2_n_0    |                        |               13 |             84 |         6.46 |
 |  xco_mmcm/inst/clk_out1 | gps/demod[2]/ser_iq[83]_i_1__8_n_0    |                        |               18 |             84 |         4.67 |
-|  xco_mmcm/inst/clk_out1 | gps/demod[3]/ser_iq[83]_i_1__7_n_0    |                        |               16 |             84 |         5.25 |
+|  xco_mmcm/inst/clk_out1 | gps/demod[4]/ser_iq[83]_i_1__6_n_0    |                        |               16 |             84 |         5.25 |
+|  xco_mmcm/inst/clk_out1 | gps/demod[1]/ser_iq[83]_i_1__9_n_0    |                        |               13 |             84 |         6.46 |
+|  xco_mmcm/inst/clk_out1 | gps/demod[0]/ser_iq[83]_i_1__10_n_0   |                        |               15 |             84 |         5.60 |
+|  xco_mmcm/inst/clk_out1 | gps/demod[9]/ser_iq[83]_i_1__1_n_0    |                        |               15 |             84 |         5.60 |
+|  xco_mmcm/inst/clk_out1 | gps/demod[6]/ser_iq[83]_i_1__4_n_0    |                        |               16 |             84 |         5.25 |
+|  xco_mmcm/inst/clk_out1 | gps/demod[7]/ser_iq[83]_i_1__3_n_0    |                        |               15 |             84 |         5.60 |
 |  xco_mmcm/inst/clk_out1 | gps/demod[10]/ser_iq[83]_i_1__0_n_0   |                        |               12 |             84 |         7.00 |
 |  xco_mmcm/inst/clk_out1 | gps/demod[5]/ser_iq[83]_i_1__5_n_0    |                        |               17 |             84 |         4.94 |
-|  xco_mmcm/inst/clk_out1 | gps/demod[0]/ser_iq[83]_i_1__10_n_0   |                        |               14 |             84 |         6.00 |
-|  xco_mmcm/inst/clk_out1 | gps/demod[9]/ser_iq[83]_i_1__1_n_0    |                        |               18 |             84 |         4.67 |
-|  xco_mmcm/inst/clk_out1 | gps/demod[4]/ser_iq[83]_i_1__6_n_0    |                        |               16 |             84 |         5.25 |
-|  xco_mmcm/inst/clk_out1 | gps/demod[7]/ser_iq[83]_i_1__3_n_0    |                        |               15 |             84 |         5.60 |
-|  xco_mmcm/inst/clk_out1 | gps/demod[8]/ser_iq[83]_i_1__2_n_0    |                        |               13 |             84 |         6.46 |
-|  xco_mmcm/inst/clk_out1 | gps/demod[6]/ser_iq[83]_i_1__4_n_0    |                        |               16 |             84 |         5.25 |
-|  xco_mmcm/inst/clk_out1 | gps/cpu/ser_sel_reg[2][0]             |                        |               35 |            204 |         5.83 |
-|  xco_mmcm/inst/clk_out1 |                                       |                        |              477 |           1624 |         3.40 |
+|  xco_mmcm/inst/clk_out1 | gps/demod[11]/ser_iq[83]_i_1_n_0      |                        |               14 |             84 |         6.00 |
+|  xco_mmcm/inst/clk_out1 | gps/demod[3]/ser_iq[83]_i_1__7_n_0    |                        |               15 |             84 |         5.60 |
+|  xco_mmcm/inst/clk_out1 | gps/cpu/ser_sel_reg[2][0]             |                        |               34 |            204 |         6.00 |
+|  xco_mmcm/inst/clk_out1 |                                       |                        |              478 |           1624 |         3.40 |
 +-------------------------+---------------------------------------+------------------------+------------------+----------------+--------------+
 
 

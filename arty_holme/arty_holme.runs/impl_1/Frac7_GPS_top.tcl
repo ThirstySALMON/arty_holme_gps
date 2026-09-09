@@ -98,6 +98,8 @@ OPTRACE "impl_1" END { }
 }
 
 set_msg_config -id {Common 17-41} -limit 10000000
+set_msg_config -id {Synth 8-256} -limit 10000
+set_msg_config -id {Synth 8-638} -limit 10000
 
 OPTRACE "impl_1" START { ROLLUP_1 }
 OPTRACE "Phase: Write Bitstream" START { ROLLUP_AUTO }
@@ -109,6 +111,8 @@ set rc [catch {
   set_param checkpoint.writeSynthRtdsInDcp 1
   set_param general.usePosixSpawnForFork 1
   set_param chipscope.maxJobs 1
+  set_param synth.incrementalSynthesisCache C:/Users/OIE/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-22212-DESKTOP-EALFKFH/incrSyn
+  set_param xicom.use_bs_reader 1
   set_param runs.launchOptions { -jobs 4  }
   open_checkpoint Frac7_GPS_top_routed.dcp
   set_property webtalk.parent_dir C:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.cache/wt [current_project]

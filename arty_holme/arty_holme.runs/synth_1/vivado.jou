@@ -3,8 +3,8 @@
 # SW Build 6299465 on Fri Nov 14 19:35:11 GMT 2025
 # IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
 # SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
-# Start of session at: Tue Sep  8 17:12:59 2026
-# Process ID         : 12920
+# Start of session at: Wed Sep  9 11:10:59 2026
+# Process ID         : 9248
 # Current directory  : C:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.runs/synth_1
 # Command line       : vivado.exe -log Frac7_GPS_top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source Frac7_GPS_top.tcl
 # Log file           : C:/Users/OIE/Desktop/arty_holme_gps/arty_holme/arty_holme.runs/synth_1/Frac7_GPS_top.vds
@@ -19,6 +19,6 @@
 # Host memory        : 21323 MB
 # Swap memory        : 3623 MB
 # Total Virtual      : 24947 MB
-# Available Virtual  : 10755 MB
+# Available Virtual  : 8719 MB
 #-----------------------------------------------------------
 source Frac7_GPS_top.tcl -notrace

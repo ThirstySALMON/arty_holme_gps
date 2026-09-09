@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2025.2 (win64) Build 6299465 Fri Nov 14 19:35:11 GMT 2025
-| Date         : Tue Sep  8 17:16:08 2026
+| Date         : Wed Sep  9 11:13:56 2026
 | Host         : DESKTOP-EALFKFH running 64-bit major release  (build 9200)
 | Command      : report_utilization -file Frac7_GPS_top_utilization_synth.rpt -pb Frac7_GPS_top_utilization_synth.pb
 | Design       : Frac7_GPS_top
@@ -98,7 +98,7 @@ Warning! For any ECO changes, please run place_design if there are unplaced inst
 +-----------------------------+------+-------+------------+-----------+-------+
 |          Site Type          | Used | Fixed | Prohibited | Available | Util% |
 +-----------------------------+------+-------+------------+-----------+-------+
-| Bonded IOB                  |   21 |     0 |          0 |       210 | 10.00 |
+| Bonded IOB                  |   20 |     0 |          0 |       210 |  9.52 |
 | Bonded IPADs                |    0 |     0 |          0 |         2 |  0.00 |
 | PHY_CONTROL                 |    0 |     0 |          0 |         6 |  0.00 |
 | PHASER_REF                  |    0 |     0 |          0 |         6 |  0.00 |
@@ -120,9 +120,9 @@ Warning! For any ECO changes, please run place_design if there are unplaced inst
 +------------+------+-------+------------+-----------+-------+
 |  Site Type | Used | Fixed | Prohibited | Available | Util% |
 +------------+------+-------+------------+-----------+-------+
-| BUFGCTRL   |    3 |     0 |          0 |        32 |  9.38 |
+| BUFGCTRL   |    1 |     0 |          0 |        32 |  3.13 |
 | BUFIO      |    0 |     0 |          0 |        24 |  0.00 |
-| MMCME2_ADV |    1 |     0 |          0 |         6 | 16.67 |
+| MMCME2_ADV |    0 |     0 |          0 |         6 |  0.00 |
 | PLLE2_ADV  |    0 |     0 |          0 |         6 |  0.00 |
 | BUFMRCE    |    0 |     0 |          0 |        12 |  0.00 |
 | BUFHCE     |    0 |     0 |          0 |        96 |  0.00 |
@@ -151,28 +151,27 @@ Warning! For any ECO changes, please run place_design if there are unplaced inst
 7. Primitives
 -------------
 
-+------------+------+---------------------+
-|  Ref Name  | Used | Functional Category |
-+------------+------+---------------------+
-| FDRE       | 4351 |        Flop & Latch |
-| LUT3       | 2178 |                 LUT |
-| LUT2       | 1912 |                 LUT |
-| CARRY4     |  510 |          CarryLogic |
-| LUT6       |  438 |                 LUT |
-| LUT4       |  360 |                 LUT |
-| FDSE       |  251 |        Flop & Latch |
-| LUT5       |  172 |                 LUT |
-| LUT1       |   22 |                 LUT |
-| FDCE       |   22 |        Flop & Latch |
-| IBUF       |   11 |                  IO |
-| OBUF       |    9 |                  IO |
-| BUFG       |    3 |               Clock |
-| FDPE       |    2 |        Flop & Latch |
-| SRL16E     |    1 |  Distributed Memory |
-| OBUFT      |    1 |                  IO |
-| MMCME2_ADV |    1 |               Clock |
-| DSP48E1    |    1 |    Block Arithmetic |
-+------------+------+---------------------+
++----------+------+---------------------+
+| Ref Name | Used | Functional Category |
++----------+------+---------------------+
+| FDRE     | 4351 |        Flop & Latch |
+| LUT3     | 2178 |                 LUT |
+| LUT2     | 1912 |                 LUT |
+| CARRY4   |  510 |          CarryLogic |
+| LUT6     |  438 |                 LUT |
+| LUT4     |  360 |                 LUT |
+| FDSE     |  251 |        Flop & Latch |
+| LUT5     |  172 |                 LUT |
+| LUT1     |   22 |                 LUT |
+| FDCE     |   22 |        Flop & Latch |
+| IBUF     |   10 |                  IO |
+| OBUF     |    9 |                  IO |
+| FDPE     |    2 |        Flop & Latch |
+| SRL16E   |    1 |  Distributed Memory |
+| OBUFT    |    1 |                  IO |
+| DSP48E1  |    1 |    Block Arithmetic |
+| BUFG     |    1 |               Clock |
++----------+------+---------------------+
 
 
 8. Black Boxes
@@ -182,6 +181,7 @@ Warning! For any ECO changes, please run place_design if there are unplaced inst
 |     Ref Name    | Used |
 +-----------------+------+
 | blk_sampler_ram |    4 |
+| clk_wiz_0       |    1 |
 | blk_logger_ram  |    1 |
 | blk_host_fifo   |    1 |
 | blk_cpu_stacks  |    1 |

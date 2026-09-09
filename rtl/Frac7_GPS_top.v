@@ -19,7 +19,7 @@
 //////////////////////////////////////////////////////////////////////////
 `default_nettype none
 module Frac7_GPS_top (
-    input wire IF_P,                 // limiter input (single-ended on Arty)
+    input wire IF_P,                 // limiter input pin (external 1-bit source, e.g. Pico)
     input wire XCO,                  // Arty 100 MHz single-ended osc (E3)
     input wire JOY_PUSH,
     input wire JOY_UP,
@@ -50,7 +50,7 @@ module Frac7_GPS_top (
     wire  [5:0] N, lcd;      // N now an unloaded GPS output (FRACN removed)
     wire [31:0] F;           // F  now an unloaded GPS output (FRACN removed)
 
-    IBUF if_ibuf (.I(IF_P), .O(limiter));                      // Limiter input (single-ended)
+    IBUF if_ibuf (.I(IF_P), .O(limiter));                      // limiter input buffer (single-ended)
 
     // Derive Holme's 10 MHz clk from the Arty 100 MHz via MMCM.
     wire clk_locked;

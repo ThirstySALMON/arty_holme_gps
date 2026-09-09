@@ -1,0 +1,21 @@
+arty_holme/
+# Vivado generated / junk
+*.jou
+*.log
+*.str
+.Xil/
+*.cache/
+*.hw/
+*.ip_user_files/
+*.runs/
+*.sim/
+*.gen/
+*.srcs/sources_1/ip/*/
+vivado*.backup.*
+*.wdb
+*.pb
+*.rpt
+webtalk*.jou
+webtalk*.log
+
+# but KEEP your sources — do NOT ignore .v, .xdc, .tcl, .xci
