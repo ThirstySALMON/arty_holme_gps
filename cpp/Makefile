@@ -1,6 +1,6 @@
 CXXFLAGS = -Wall -Wextra -Wshadow -O2
-LINK.o = $(LINK.cc)
-LDFLAGS = -lrt -lfftw3f
+LDLIBS = -lrt -lfftw3f
 main: main.o channel.o coroutines.o ephemeris.o peri.o search.o solve.o spi.o user.o
+	$(CXX) $(CXXFLAGS) $^ -o $@ $(LDLIBS)
 clean:
 	rm -f *.o main

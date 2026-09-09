@@ -1,55 +1,91 @@
 //////////////////////////////////////////////////////////////////////////
-// Homemade GPS Receiver
+// Homemade GPS Receiver — cooperative scheduler
+// Copyright (C) 2018 Max Apodaca
 // Copyright (C) 2013 Andrew Holme
 //
-// This program is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
+// aarch64 (64-bit) port. The original implemented cooperative coroutines by
+// poking the saved stack-pointer / program-counter fields directly inside a
+// glibc jmp_buf (with SETJMP_OFFSET and pointer-mangling reverse-engineered
+// from a 32-bit ARM build). That layout is armhf-specific and jumps to a
+// garbage PC on aarch64. This version uses POSIX ucontext (makecontext /
+// swapcontext) — the portable, ABI-correct mechanism for the same thing.
 //
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
+// Public interface is UNCHANGED (InitTasks, CreateTask, NextTask, TimerWait,
+// EventRaise, EventCatch, Microseconds), so no other file needs editing.
 //
-// You should have received a copy of the GNU General Public License
-// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+// Semantics preserved:
+//   - Task 0 is the main context (the code that calls InitTasks()).
+//   - CreateTask(entry) adds a task that starts at entry() on its own stack;
+//     entry must never return (matches original contract).
+//   - NextTask() round-robins to the next task, cycling back to 0.
 //
-// http://www.aholme.co.uk/GPS/Main.htm
+// GPL v3.  http://www.aholme.co.uk/GPS/Main.htm
 //////////////////////////////////////////////////////////////////////////
 
-#include <setjmp.h>
+#include <ucontext.h>
 #include <time.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-#define STACK_SIZE 8192
-#define MAX_TASKS 20
+#define STACK_SIZE (256*1024)   // per-task stack (generous; FFT/search use it)
+#define MAX_TASKS  20
 
 struct TASK {
-    int stk[STACK_SIZE];
-    union {
-        jmp_buf jb;
-        struct {
-            void *v[6], *sl, *fp, *sp, (*pc)();
-        };
-    };
+    ucontext_t ctx;
+    char       stack[STACK_SIZE];
+    void     (*entry)();
+    int        active;
 };
 
 static TASK Tasks[MAX_TASKS];
-static int NumTasks=1;
+static int  NumTasks = 1;   // task 0 = main context
+static int  curId    = 0;   // currently running task
 static unsigned Signals;
 
-void NextTask() {
-    static int id;
-    if (setjmp(Tasks[id].jb)) return;
-    if (++id==NumTasks) id=0;
-    longjmp(Tasks[id].jb, 1);
+//////////////////////////////////////////////////////////////////////////
+// InitTasks — establish task 0 as the main context. No more pointer-mangling
+// or SETJMP_OFFSET; ucontext handles the machine state portably.
+
+void InitTasks() {
+    getcontext(&Tasks[0].ctx);   // task 0 uses the real main stack
+    Tasks[0].active = 1;
+    NumTasks = 1;
+    curId = 0;
 }
 
+//////////////////////////////////////////////////////////////////////////
+// CreateTask — spawn a task that begins executing entry() on a fresh stack.
+
 void CreateTask(void (*entry)()) {
-    TASK *t = Tasks + NumTasks++;
-    t->pc = entry;
-    t->sp = t->stk + STACK_SIZE-2;
+    if (NumTasks >= MAX_TASKS) { fprintf(stderr, "CreateTask: too many tasks\n"); exit(1); }
+    TASK *t = &Tasks[NumTasks];
+
+    getcontext(&t->ctx);
+    t->ctx.uc_stack.ss_sp   = t->stack;
+    t->ctx.uc_stack.ss_size = STACK_SIZE;
+    t->ctx.uc_link          = 0;    // entry must never return (original contract)
+    t->entry  = entry;
+    t->active = 1;
+
+    // makecontext takes a void(*)() with no args — entry matches that exactly.
+    makecontext(&t->ctx, entry, 0);
+
+    NumTasks++;
 }
+
+//////////////////////////////////////////////////////////////////////////
+// NextTask — cooperative round-robin yield. Save current task, switch to the
+// next one (wrapping to 0). swapcontext restores the target and returns here
+// when someone later switches back to us.
+
+void NextTask() {
+    int prev = curId;
+    if (++curId == NumTasks) curId = 0;
+    if (curId == prev) return;             // only one task: nothing to switch to
+    swapcontext(&Tasks[prev].ctx, &Tasks[curId].ctx);
+}
+
+//////////////////////////////////////////////////////////////////////////
 
 unsigned Microseconds(void) {
     struct timespec ts;
@@ -62,15 +98,17 @@ void TimerWait(unsigned ms) {
     for (;;) {
         NextTask();
         int diff = finish - Microseconds();
-        if (diff<=0) break;
+        if (diff <= 0) break;
     }
 }
+
+//////////////////////////////////////////////////////////////////////////
 
 void EventRaise(unsigned sigs) {
     Signals |= sigs;
 }
 
-unsigned EventCatch(unsigned sigs) {
+unsigned int EventCatch(unsigned sigs) {
     sigs &= Signals;
     Signals -= sigs;
     return sigs;
