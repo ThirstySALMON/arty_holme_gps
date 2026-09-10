@@ -1,0 +1,14 @@
+**gps-sdr-sim**
+Receives: a RINEX ephemeris file, a location (lat/lon/height), and a duration. Outputs: a raw GPS baseband signal file — 16-bit complex I/Q samples at 2.6 MHz, simulating the satellites visible from that location.
+
+**convert_iq.py**
+Receives: the 16-bit I/Q baseband file. Outputs: a 1-bit sample file at 10 MHz, with the signal mixed up to the 2.6 MHz IF and hard-limited to one bit per sample (packed 8 bits/byte, MSB-first) — the exact format the receiver expects.
+
+**Streaming Device**
+Receives: the 1-bit sample file. Outputs: a continuous 1-bit digital stream at 10 Mbit/s, driven onto a single wire. This replaces the antenna, RF front-end, and 1-bit ADC of the original design.
+
+**FPGA (Andrew Holme's Receiver)**
+Receives: the 1-bit stream on its IF_P pin (sampled on its internal 10 MHz clock), plus commands and the Forth CPU binary from the Pi over SPI. Outputs: correlator results and satellite tracking data back to the Pi.
+
+**Raspberry Pi**
+Receives: the correlator/tracking data from the FPGA over SPI. Outputs: the loaded Forth binary and control commands to the FPGA, and the final computed position (acquisition, tracking, and the navigation solution) to the user.
